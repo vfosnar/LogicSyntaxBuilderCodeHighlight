@@ -1,0 +1,25 @@
+{
+    "name": "logic-lang",
+    "displayName": "logic",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "logic",
+            "aliases": ["logic", "logic"],
+            "extensions": [".logic"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "logic",
+            "scopeName": "source.logic",
+            "path": "./syntaxes/logic.tmLanguage.json"
+        }]
+    }
+}

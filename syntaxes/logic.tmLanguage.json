@@ -1,0 +1,103 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "logic",
+	"patterns":
+	[
+		{
+			"include": "#global"
+		},
+		{
+			"include": "#reference"
+		},
+		{
+			"include": "#define"
+		},
+		{
+			"include": "#assign"
+		}
+	],
+	"repository":
+	{
+		"global": {
+			"patterns": [
+				{
+					"name":"entity.name.class.logic",
+					"match": "\\b(reference:|define:|assign:)\n"
+				}
+			]
+		},
+		"reference": {
+			"begin":"(?<=\\breference:\n)",
+			"end":"(?=\\bdefine:\n)",
+			"patterns": [
+				{
+					"name": "keyword.control.logic",
+					"match": "\\b(use|as)\\b"
+				},
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#numbers"
+				}
+			]
+		},
+		"define": {
+			"begin":"(?<=\\bdefine:\n)",
+			"end":"(?=\\bassign:\n)",
+			"patterns":
+			[
+				{
+					"name": "keyword.control.logic",
+					"match": "(?<!\\bassign:\n)\\b(in|out)\\b"
+				},
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#numbers"
+				}
+			]
+		},
+		"assign":{
+			"begin":"(?<=\\bassign:\n)",
+			"patterns":
+			[
+				{
+					"name": "keyword.control.logic",
+					"match": "\\b(to|exp)\\b"
+				},
+				{
+					"name": "entity.name.function",
+					"match": "(?<=<=\\ )(and|or|xor|nand|nor|xnor)\\b"
+				},
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#numbers"
+				}
+			]
+		},
+
+		"comment": {
+			"patterns": [
+				{
+					"name":"comment.line.logic",
+					"match":";.*\n"
+				}
+			]
+		},
+		"numbers": {
+			"begin": "\\[",
+			"end":"\\]",
+			"patterns": [
+				{
+					"name":"constant.numeric.logic",
+					"match":"[0-9]+"
+				}
+			]
+		}
+	},
+	"scopeName": "source.logic"
+}
