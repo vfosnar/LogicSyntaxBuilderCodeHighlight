@@ -68,8 +68,16 @@
 					"match": "\\b(to|exp)\\b"
 				},
 				{
-					"name": "entity.name.function",
+					"name": "entity.name.function.logic",
 					"match": "(?<=<=\\ )(and|or|xor|nand|nor|xnor)\\b"
+				},
+				{
+					"name":"variable.logic",
+					"match":"(?<=\\bto\\ )[^_]\\S*"
+				},
+				{
+					"name":"variable.logic",
+					"match":"(?<=\\bexp\\ \\S*\\ <=(\\ and|\\ or|\\ xor|\\ nand|\\ nor|\\ xnor)?.*\\W)[^_]\\S*"
 				},
 				{
 					"include": "#comment"
